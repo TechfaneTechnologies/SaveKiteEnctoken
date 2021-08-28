@@ -1,4 +1,4 @@
-// ==UserScript==
+  // ==UserScript==
 // @name         SaveKiteEnctokenFromPublisher
 // @namespace    https://github.com/TechfaneTechnologies/SaveKiteEnctoken
 // @version      0.0.1
@@ -16,6 +16,6 @@
     'use strict';
     var current_enctoken = window.document.cookie.split('; ').slice(-1)[0].split('enctoken=').slice(-1)[0]
     console.log(current_enctoken)
-    var blob = new Blob([current_enctoken], {type: "text/plain;charset=utf-8"});
+    var blob = new Blob(["enctoken="+current_enctoken], {type: "text/plain;charset=utf-8"});
     saveAs(blob, "enctoken.txt");
 })();
