@@ -6,15 +6,39 @@
 // @author       Quantitative Algo Trading https://t.me/quantalgotradings
 // @match        https://kite.zerodha.com/*
 // @icon         https://www.google.com/s2/favicons?domain=zerodha.com
-// @grant        none
+// @grant        GM_setValue
+// @grant        GM_getValue
+// @grant        GM_addStyle
+// @grant        GM_registerMenuCommand
+// @require      https://raw.githubusercontent.com/TechfaneTechnologies/SaveKiteEnctoken/main/betterCommon.js
+// @require      https://raw.githubusercontent.com/TechfaneTechnologies/SaveKiteEnctoken/main/monkeyconfig.js
+// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js
+// @require      https://raw.githubusercontent.com/kawanet/qs-lite/master/dist/qs-lite.min.js
+// @require      https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js
 // @downloadURL  https://github.com/TechfaneTechnologies/SaveKiteEnctoken/SaveKiteEnctoken.user.js
 // @updateURL    https://github.com/TechfaneTechnologies/SaveKiteEnctoken/SaveKiteEnctoken.meta.js
 // ==/UserScript==
 
 (function() {
     'use strict';
-    const YOUR_API_KEY = "$2b$10$X.hXiOt6nYXumjrocr4qTOQHqjYzbqTlZ9un6Jczsp5wDjE3JcAv6" // Update YOUR_API_KEY Master API KEY Obtained from jsonbin.com
-    const BIN_ID = "6129ad7c2aa8003612711a03" // update the bin id
+    const g_config = new MonkeyConfig({
+        title: 'SaveKiteEnctoken Settings',
+        menuCommand: true,
+        onSave: reloadPage,
+        params: {
+            your_api_key: {
+                type: 'text',
+                default: ""
+            },
+            bin_id: {
+                type: 'text',
+                default: ""
+            },
+        }
+    });
+    const YOUR_API_KEY = g_config.get('your_api_key');
+    const BIN_ID = g_config.get('bin_id');
 
     const REQUEST_URL = "https://api.jsonbin.io/v3/b/"+BIN_ID+"/latest"
     var current_enctoken = window.document.cookie.split('; ').slice(-1)[0].split('enctoken=').slice(-1)[0]
