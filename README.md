@@ -1,5 +1,5 @@
 # SaveKiteEnctoken
-### The Script Save KiteEnctoken to jsonbin.com, which can be used to synchronized Kite Enctoken between your local pc/laptop browser and Algo Trading Code at Remote Servers.
+### The Script Save KiteEnctoken to jsonbin.io, which can be used to synchronized Kite Enctoken between your local pc/laptop browser and Algo Trading Code at Remote Servers.
 
 #### To set it up for the first time, you need to follow these steps. _(Once all the steps completed, from next login onwards it will work automatically)_
 ##### Browser Setup
