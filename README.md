@@ -28,7 +28,7 @@
 ![image](https://user-images.githubusercontent.com/68828793/131209959-6bba69d4-50e0-47a6-a571-83d597a21455.png)
 12. Click on It, and then click on the setting below SaveKiteEnctoken
 ![image](https://user-images.githubusercontent.com/68828793/131209986-8f2f206c-d700-40b3-9ebc-d0eadf755da4.png)
-13. Now Fill the _Your Api Key with the Master Key Saved in Point No. 7_ and _Bin id with the BIN ID saved in Point No.5_ and then click on save.
+13. Now Fill the _Your Api Key with the MASTER KEY Saved in Point No. 7_ and _Bin id with the BIN ID saved in Point No.5_ and then click on save.
 ![image](https://user-images.githubusercontent.com/68828793/131210054-9ffa6bf8-90f2-489a-972a-fbc14418d981.png)
 14. Now Login to kite as usual, and the enctoken will automatically be updated.
 
