@@ -2,6 +2,7 @@
 ### The Script Save KiteEnctoken to jsonbin.com, which can be used to synchronized Kite Enctoken between your local pc/laptop browser and Algo Trading Code at Remote Servers.
 
 #### To set it up for the first time, you need to follow these steps. _(Once all the steps completed, from next login onwards it will work automatically)_
+##### Browser Setup
 1. Go to https://jsonbin.io/login ans signup wth your gmail/github/facebook/twitter account.
 ![image](https://user-images.githubusercontent.com/68828793/131208460-3f285490-3bbd-499e-bd7b-2f1f61ff6fed.png)
 2. Now Click on Create New
@@ -29,11 +30,35 @@
 ![image](https://user-images.githubusercontent.com/68828793/131209986-8f2f206c-d700-40b3-9ebc-d0eadf755da4.png)
 13. Now Fill the _Your Api Key with the Master Key Saved in Point No. 7_ and _Bin id with the BIN ID saved in Point No.5_ and then click on save.
 ![image](https://user-images.githubusercontent.com/68828793/131210054-9ffa6bf8-90f2-489a-972a-fbc14418d981.png)
+14. Now Login to kite as usual, and the enctoken will automatically be updated.
 
+##### Python Program Modification for obtaining enctoken automatically.
+```python
+###############################################################################
+import requests
 
+def get_enctoken(YOUR_API_KEY, BIN_ID):
+    enctoken_url = "https://api.jsonbin.io/v3/b/"+BIN_ID+"/latest"
+    headers = {
+        'X-Master-Key': YOUR_API_KEY
+    }
+    req = requests.get(enctoken_url, json=None, headers=headers)
+    enctoken = req.json()['record']['enctoken']
+    return enctoken
 
+YOUR_API_KEY = <PASTE 60 Charachter Master Key HERE from Point No.7>
+BIN_ID = <PASTE 24 Charachter BIN_ID HERE from point No. 5>
+enctoken = get_enctoken(YOUR_API_KEY, BIN_ID)
 
+#################################################################################
+  # For Example in our case it will be
+  # YOUR_API_KEY = "$2b$10$IIWfEN3l97/jWpsxjBli0eUQopUdqzt0Ksx9dl87xGINSKxCesLte"
+  # BIN_ID = "6129d9bd2aa800361271257f"
+  # enctoken = get_enctoken(YOUR_API_KEY, BIN_ID)
+#################################################################################
+```
 
+15. Hence, For Example if you want to run your code from colab just do like this and it wont log you out of your browser session. _(and when your browser session expires and you relogin, the enctoken will automatically be updated and your algo code will work as intended without interruption)_
+![image](https://user-images.githubusercontent.com/68828793/131210387-51e52d8f-784d-4909-8c25-843953f54ab4.png)
 
-
-
+### Disclaimer: I have made this tool for my personal use and it may have bugs.
